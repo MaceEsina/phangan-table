@@ -3,7 +3,7 @@
 
   var TR_EVEN_CLASS = 'even-row';
 
-  var headers = ['Название услуги', 'Имя', 'Контакты', 'Описание, цены, ссылки', 'До какой даты'];
+  var headers = ['Название услуги', 'Контакты', 'Описание, цены, ссылки'];
   var spreadsheetId = '1ozmzzK503RbPPEmiIddd9SFcxHuXTF21fVUxV3nLWJQ';
   var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/1/public/values?alt=json';
   var xhr = new XMLHttpRequest();
@@ -53,10 +53,8 @@
 
   function createTableRow(tr, data) {
     tr.insertCell().innerHTML = retainLineBreaks(data.gsx$названиеуслуги.$t);
-    tr.insertCell().innerHTML = retainLineBreaks(data.gsx$имя.$t);
-    tr.insertCell().innerHTML = retainLineBreaks(data.gsx$контакты.$t);
+    tr.insertCell().innerHTML = retainLineBreaks(data.gsx$имя.$t + '\n' + data.gsx$контакты.$t);
     tr.insertCell().innerHTML = retainLineBreaks(data.gsx$описаниеценыссылки.$t);
-    tr.insertCell().innerHTML = retainLineBreaks(data.gsx$докакойдаты.$t);
   }
 
   function retainLineBreaks(str) {
