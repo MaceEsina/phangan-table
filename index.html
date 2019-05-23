@@ -9,5 +9,52 @@
 <body>
   <div id="table"></div>
   <script src="index.js"></script>
+  <style>
+    #table {
+      font-family: 'Circe',Arial,sans-serif;
+      line-height: 1.55;
+      font-size: 18px;
+      padding-top: 15px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    #table table {
+      max-width: 1160px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      text-align: left;
+      margin: auto;
+      border-bottom: 1px solid #d9d9d9;
+    }
+
+    #table th {
+      border-bottom: 1px solid #000;
+      padding: 20px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    #table td {
+      padding: 20px;
+      font-weight: 300;
+      color: #4d4c4c;
+      vertical-align: top;
+    }
+
+    #table .even-row {
+      background: #eeeeee;
+      border-bottom: 1px solid #d9d9d9;
+      border-top: 1px solid #d9d9d9;
+    }
+
+    #table th:first-of-type {
+      min-width: 145px;
+    }
+
+    #table th:last-of-type {
+      min-width: 120px;
+    }
+  </style>
 </body>
 </html>

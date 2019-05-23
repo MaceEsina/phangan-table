@@ -1,12 +1,7 @@
 (function() {
   'use strict';
 
-  var TABLE_CLASS = 't431__table';
-  var THEAD_CLASS = 't431__thead';
-  var TBODY_CLASS = 't431__tbody';
-  var TH_CLASS = 't431__th';
-  var TR_ODD_CLASS = 't431__oddrow';
-  var TR_EVEN_CLASS = 't431__evenrow';
+  var TR_EVEN_CLASS = 'even-row';
 
   var headers = ['Название услуги', 'Имя', 'Контакты', 'Описание, цены, ссылки', 'До какой даты'];
   var spreadsheetId = '1ozmzzK503RbPPEmiIddd9SFcxHuXTF21fVUxV3nLWJQ';
@@ -23,7 +18,6 @@
 
   function createTable(jsonObj) {
     var table = document.createElement("table");
-    table.classList.add(TABLE_CLASS);
 
     createTableHead(table);
     createTableBody(table, jsonObj.feed.entry);
@@ -36,28 +30,24 @@
     var tr = head.insertRow();
     var i, th;
 
-    head.classList.add(THEAD_CLASS);
-
     for (i = 0; i < headers.length; i++) {
       th = document.createElement('th');
       th.innerHTML = headers[i];
-      th.classList.add(TH_CLASS);
       tr.appendChild(th);
     }
   }
 
   function createTableBody(table, rowArray) {
     var body = document.createElement('tbody');
-    var i, tr, isOdd = true;
+    var i, tr, isEven = false;
 
-    body.classList.add(TBODY_CLASS);
     table.appendChild(body);
 
     for (i = 0; i < rowArray.length; i++) {
       tr = body.insertRow();
-      tr.classList.add(isOdd ? TR_ODD_CLASS : TR_EVEN_CLASS);
+      isEven && tr.classList.add(TR_EVEN_CLASS);
       createTableRow(tr, rowArray[i]);
-      isOdd = !isOdd;
+      isEven = !isEven;
     }
   }
 
